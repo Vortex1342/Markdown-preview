@@ -1,0 +1,17 @@
+.outputBox{
+    border: 1px solid #ccc; 
+  background-color: #212529;
+  padding: 20px;
+  margin-top: 20px; 
+  overflow-y: auto; 
+  max-height: 300px;
+  color: rgb(255, 255, 255)fff;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 20px;
+}
+
+.outputBox::placeholder{
+    color: aliceblue;
+}
