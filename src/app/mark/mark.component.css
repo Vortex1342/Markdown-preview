@@ -1,5 +1,5 @@
 .outputBox{
-    border: 1px solid #ccc; 
+    /* border: 1px solid #ccc;  */
   background-color: #212529;
   padding: 20px;
   margin-top: 20px; 
@@ -12,6 +12,18 @@
   font-size: 20px;
 }
 
-.outputBox::placeholder{
-    color: aliceblue;
+.otBox{
+  border: 1px solid #464141; 
+  background-color: #212529;
+  overflow-y: auto; 
+  height: 30vh;
+  color: rgb(255, 255, 255)fff;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  transition: 0.7s all;
+}
+
+.otBox:hover{
+  border: 1px solid #dad5d5;
 }

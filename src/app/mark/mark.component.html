@@ -3,41 +3,45 @@
     <div class="col-10 col-md-8 px-1">
         <div class="btn-toolbar py-2" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
-                    <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Disabled tooltip">
-                        <button type="button" class="btn" (click)="applyHeading1()"><span class="material-symbols-outlined">
-                            format_h1
-                            </span></button>
-                      </span>
-                <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="up" (click)="quote()">H2</button>
+                <button type="button" class="btn" (click)="applyHeading1()"><span class="material-symbols-outlined">
+                        format_h1
+                    </span></button>
+                <button type="button" class="btn" (click)="checkCode()"><span class="material-symbols-outlined">
+                        code
+                    </span></button>
             </div>
             <div class="btn-group me-2" role="group" aria-label="Second group">
-                
-                <button type="button" class="btn" (click)="checkBold()"><span class="material-symbols-outlined">
-                    format_bold
+
+                <button type="button" class="btn" (click)="checkBold() "><span class="material-symbols-outlined">
+                        format_bold
                     </span></button>
                 <button type="button" class="btn" (click)="checkItalic()"><span class="material-symbols-outlined">
-                    format_italic
+                        format_italic
                     </span></button>
             </div>
             <div class="btn-group" role="group" aria-label="Third group">
-                <button type="button" class="btn btn-info" (click)="checkLink()"><span class="material-symbols-outlined">
-                    link
+                <button type="button" class="btn" (click)="checkLink()"><span class="material-symbols-outlined">
+                        link
                     </span></button>
+                <div id="displayBox" class="d-none bg-light p-3 border">This is the display box content.</div>
+
             </div>
         </div>
         <div class="form-floating">
-            <textarea class="form-control"  [(ngModel)]="markdownText" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px;max-height: 200px; font-size: 20px; overflow-y: auto; " id="textArea"></textarea>
+            <textarea class="form-control" [(ngModel)]="markdownText" placeholder="Leave a comment here"
+                id="floatingTextarea2" style="height: 150px;max-height: 200px; font-size: 20px; overflow-y: auto; "
+                id="textArea"></textarea>
             <label for="floatingTextarea2">Input</label>
-          </div>
+        </div>
     </div>
     <div class="col-1 col-md-2"></div>
 </div>
 <div class="row">
     <div class="col-1 col-md-2"></div>
-    <div class="col-10 col-md-8" >
+    <div class="col-10 col-md-8 otBox">
         <h1>Preview</h1>
         <div class="container outputBox" [innerHTML]="getPreviewHtml()">
-            
+
         </div>
     </div>
     <div class="col-1 col-md-2"></div>

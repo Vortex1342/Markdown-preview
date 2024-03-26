@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as marked from 'marked';
 import { FormsModule } from '@angular/forms';
+// import { Tooltip } from 'bootstrap';
 
 @Component({
   selector: 'app-mark',
@@ -11,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class MarkComponent {
   markdownText: string = '';
-  
-  getPreviewHtml(){
+
+  getPreviewHtml() {
     return marked.parse(this.markdownText);
   }
 
@@ -27,7 +28,7 @@ export class MarkComponent {
     }
   }
 
-  bold(){
+  bold() {
     this.markdownText = this.markdownText + ' **(TEXT)** '
   }
 
@@ -40,18 +41,14 @@ export class MarkComponent {
       const selectedText = textarea.value.substring(start, end);
       const beforeText = textarea.value.substring(0, start);
       const afterText = textarea.value.substring(end);
-
-      // Apply Markdown bold syntax
       this.markdownText = `${beforeText}**${selectedText}**${afterText}`;
-      
-      // Update cursor position
-      textarea.value = this.markdownText; // Reflect the updated text in the textarea
-      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length; // Position the cursor after the bold syntax
+      textarea.value = this.markdownText;
+      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length;
     }
   }
 
 
-  applyHeading1(){
+  applyHeading1() {
     const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
@@ -59,19 +56,15 @@ export class MarkComponent {
     if (start !== undefined && end !== undefined) {
       const selectedText = textarea.value.substring(start, end);
       const beforeText = textarea.value.substring(0, start);
-
-      // Apply Markdown bold syntax
       this.markdownText = `${beforeText}# ${selectedText}`;
-      
-      // Update cursor position
-      textarea.value = this.markdownText; // Reflect the updated text in the textarea
-      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length; // Position the cursor after the bold syntax
+      textarea.value = this.markdownText;
+      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length;
     }
   }
 
 
 
-  checkItalic(){
+  checkItalic() {
     const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
     const textSelected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
 
@@ -82,11 +75,11 @@ export class MarkComponent {
     }
   }
 
-  italic(){
+  italic() {
     this.markdownText = this.markdownText + ' _(TEXT)_ '
   }
 
-  applyItalic(){
+  applyItalic() {
     const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
@@ -95,17 +88,13 @@ export class MarkComponent {
       const selectedText = textarea.value.substring(start, end);
       const beforeText = textarea.value.substring(0, start);
       const afterText = textarea.value.substring(end);
-
-      // Apply Markdown bold syntax
       this.markdownText = `${beforeText}_${selectedText}_${afterText}`;
-      
-      // Update cursor position
-      textarea.value = this.markdownText; // Reflect the updated text in the textarea
-      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length; // Position the cursor after the bold syntax
+      textarea.value = this.markdownText;
+      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length;
     }
   }
 
-  checkLink(){
+  checkLink() {
     const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
     const textSelected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
 
@@ -116,10 +105,10 @@ export class MarkComponent {
     }
   }
 
-  link(){
+  link() {
     this.markdownText = this.markdownText + '[TEXT](URL)'
   }
-  applyLink(){
+  applyLink() {
     const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
@@ -128,17 +117,26 @@ export class MarkComponent {
       const selectedText = textarea.value.substring(start, end);
       const beforeText = textarea.value.substring(0, start);
       const afterText = textarea.value.substring(end);
-
       // Apply Markdown bold syntax
       this.markdownText = `${beforeText}[${selectedText}](${afterText}url)`;
-      
       // Update cursor position
       textarea.value = this.markdownText; // Reflect the updated text in the textarea
       textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length; // Position the cursor after the bold syntax
     }
   }
 
-  quote(){
+  checkCode() {
+    const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
+    const textSelected = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+
+    if (textSelected.length > 0) {
+      this.applyCode();
+    } else {
+      this.codeBlocks();
+    }
+  }
+
+  applyCode() {
     const textarea = document.getElementById('textArea') as HTMLTextAreaElement;
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
@@ -147,17 +145,15 @@ export class MarkComponent {
       const selectedText = textarea.value.substring(start, end);
       const beforeText = textarea.value.substring(0, start);
       const afterText = textarea.value.substring(end);
-
-      // Apply Markdown bold syntax
-      // this.markdownText = `${beforeText}```${selectedText}```${afterText}`;
-      
-      // Update cursor position
-      textarea.value = this.markdownText; // Reflect the updated text in the textarea
-      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length; // Position the cursor after the bold syntax
+      this.markdownText = `${beforeText}\`${selectedText}\`${afterText}`;
+      textarea.value = this.markdownText;
+      textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length;
     }
   }
 
-  // codeBlocks(){
-  //   this.markdownText = 
-  // }
+  codeBlocks() {
+    this.markdownText = this.markdownText + ' ` (CODE) ` '
+  }
+
+
 }
