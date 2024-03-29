@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import * as marked from 'marked';
 import { FormsModule } from '@angular/forms';
-// import { Tooltip } from 'bootstrap';
 
 @Component({
   selector: 'app-mark',
@@ -88,7 +87,7 @@ export class MarkComponent {
       const selectedText = textarea.value.substring(start, end);
       const beforeText = textarea.value.substring(0, start);
       const afterText = textarea.value.substring(end);
-      this.markdownText = `${beforeText}_${selectedText}_${afterText}`;
+      this.markdownText = `${beforeText} _${selectedText}_ ${afterText}`;
       textarea.value = this.markdownText;
       textarea.selectionStart = textarea.selectionEnd = start + 2 + selectedText.length;
     }

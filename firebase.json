@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "mpvk",
+    "public": "dist/markdown/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
